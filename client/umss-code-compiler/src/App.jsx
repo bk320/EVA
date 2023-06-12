@@ -4,7 +4,10 @@ import FormRegister from "./components/form-register/FormRegister"
 import Home from "./components/home/home"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import SideBar from "./components/common/sidebar/sidebar"
-import LessonOne from "./components/lessons/lesson-one/lesson-one"
+import LessonActivity from "./components/lessons/lesson-one/lesson-activity"
+import LessonDoWhile from "./components/lessons/lesson-one/lesson-dowhile"
+import LessonWhile from "./components/lessons/lesson-one/lesson-while"
+import LessonFor from "./components/lessons/lesson-one/lesson-for"
 
 const routes = createBrowserRouter([
   {
@@ -20,8 +23,20 @@ const routes = createBrowserRouter([
         element: <FormRegister />
       },
       {
-        path: "/lessons/lesson-one",
-        element: <LessonOne/>
+        path: "/lessons/lesson-one/lesson-activity",
+        element: <LessonActivity/>
+      },
+      {
+        path: "/lessons/lesson-one/lesson-dowhile",
+        element: <LessonDoWhile/>
+      },
+      {
+        path: "/lessons/lesson-one/lesson-while",
+        element: <LessonWhile/>
+      },
+      {
+        path: "/lessons/lesson-one/lesson-for",
+        element: <LessonFor/>
       }
     ]
   }

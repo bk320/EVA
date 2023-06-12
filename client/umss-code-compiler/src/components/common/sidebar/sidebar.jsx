@@ -51,7 +51,7 @@ export default function SideBar() {
                     <UserProfileIcon />
                   </div>
                 </NavIcon>
-                <NavText>Profile</NavText>
+                <NavText>Perfil</NavText>
               </NavItem>
               <NavItem eventKey="home" active={sideSelectedState === "home"}>
                 <NavIcon>
@@ -59,7 +59,7 @@ export default function SideBar() {
                     <HomeIcon />
                   </div>
                 </NavIcon>
-                <NavText>Home</NavText>
+                <NavText>Inicio</NavText>
               </NavItem>
               <NavItem eventKey="lessons">
                 <NavIcon>
@@ -67,12 +67,18 @@ export default function SideBar() {
                     <LessonsIcon />
                   </div>
                 </NavIcon>
-                <NavText className="text-black">Lessons</NavText>
-                <NavItem eventKey="lessons/lesson-one">
-                  <NavText>Lesson one</NavText>
+                <NavText className="text-black">Lecciones</NavText>
+                <NavItem eventKey="lessons/lesson-one/lesson-dowhile">
+                  <NavText>Ciclo Do While</NavText>
                 </NavItem>
-                <NavItem eventKey="lessons/barchart">
-                  <NavText>Lesson two</NavText>
+                <NavItem eventKey="lessons/lesson-one/lesson-while">
+                  <NavText>Ciclo While</NavText>
+                </NavItem>
+                <NavItem eventKey="lessons/lesson-one/lesson-for">
+                  <NavText>Ciclo For</NavText>
+                </NavItem>
+                <NavItem eventKey="lessons/lesson-one/lesson-activity">
+                  <NavText>Actividad</NavText>
                 </NavItem>
               </NavItem>
             </SideNav.Nav>

@@ -4,7 +4,7 @@ import "./home.css"
 function Home() {
   const navigate = useNavigate()
   const goTo = function () {
-    navigate("/lessons/lesson-one")
+    navigate("/lessons/lesson-one/lesson-dowhile")
   }
   return (
     <>
@@ -29,9 +29,9 @@ function Home() {
             Existen tres tipos de ciclos en Java, cada uno tiene una utilidad para casos específicos y depende de nuestra habilidad y
             conocimientos poder determinar en qué momento es bueno usar alguno de ellos. Esos ciclos son:<br/><br/>
             <ul>
-                <li> - Ciclo For</li>
-                <li> - Ciclo While</li>
                 <li> - Ciclo Do While</li>
+                <li> - Ciclo While</li>
+                <li> - Ciclo For</li>
             </ul>
             </p>
         <div className="flex justify-center p-3 ">
