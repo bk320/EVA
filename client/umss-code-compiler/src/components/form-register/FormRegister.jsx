@@ -1,4 +1,4 @@
-function FormRegister () {
+function FormRegister() {
   return (
     <>
       <button>formRegister Button</button>

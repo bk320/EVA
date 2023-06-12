@@ -45,5 +45,6 @@ module.exports = {
     "react/react-in-jsx-scope": 0,
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
+    "space-before-function-paren": 0,
   }
 }
