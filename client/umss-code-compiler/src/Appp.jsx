@@ -3,6 +3,7 @@ import React from "react"
 import FormRegister from "./components/form-register/FormRegister"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import SideBar from "./components/common/sidebar/sidebar"
+import Tarea from "./task_1/ciclo_for"
 
 const routes = createBrowserRouter([
   {
@@ -16,8 +17,13 @@ const routes = createBrowserRouter([
       {
         path: "/profile",
         element: <FormRegister />
+      },
+      {
+        path: "/lessons/linechart",
+        element: <Tarea/>
       }
     ]
+
   }
 ])
 

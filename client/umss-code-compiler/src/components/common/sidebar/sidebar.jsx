@@ -23,7 +23,9 @@ export default function SideBar () {
           {navSideOpen ? <div className="text-white font-semibold text-lg">Code compiler app</div> : <></>}
         </div>
         <SideNav.Toggle />
+        
         <SideNav.Nav defaultSelected="home">
+          
           <NavItem eventKey="profile" className="h-full">
             <NavIcon>
               <div className="flex p-2.5 max-h-full">
@@ -32,6 +34,7 @@ export default function SideBar () {
             </NavIcon>
             <NavText>Profile</NavText>
           </NavItem>
+          
           <NavItem eventKey="home" active={sideSelectedState === "home"}>
             <NavIcon>
               <div className="flex p-2.5 max-h-full">
@@ -40,21 +43,25 @@ export default function SideBar () {
             </NavIcon>
             <NavText>Home</NavText>
           </NavItem>
+          
           <NavItem eventKey="lessons">
             <NavIcon>
               <div className="flex p-2.5 max-h-full">
                 <LessonsIcon />
               </div>
             </NavIcon>
+
             <NavText className="text-black">Lessons</NavText>
             <NavItem eventKey="lessons/linechart">
               <NavText>Lesson one</NavText>
             </NavItem>
+            
             <NavItem eventKey="lessons/barchart">
               <NavText>Lesson two</NavText>
             </NavItem>
           </NavItem>
         </SideNav.Nav>
+      
       </SideNav>
       </React.Fragment>
           </div>
