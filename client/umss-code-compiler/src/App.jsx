@@ -8,6 +8,7 @@ import LessonActivity from "./components/lessons/lesson-one/lesson-activity"
 import LessonDoWhile from "./components/lessons/lesson-one/lesson-dowhile"
 import LessonWhile from "./components/lessons/lesson-one/lesson-while"
 import LessonFor from "./components/lessons/lesson-one/lesson-for"
+import LessonActivityFor from "./components/lessons/lesson-one/lesson-activityfor"
 
 const routes = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const routes = createBrowserRouter([
       {
         path: "/lessons/lesson-one/lesson-activity",
         element: <LessonActivity/>
+      },
+      {
+        path: "/lessons/lesson-one/lesson-activityfor",
+        element: <LessonActivityFor/>
       },
       {
         path: "/lessons/lesson-one/lesson-dowhile",

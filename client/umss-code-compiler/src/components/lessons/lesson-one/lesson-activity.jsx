@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import "./lesson-activity.css"
 
 const enumLoop = {
@@ -8,11 +9,12 @@ const enumLoop = {
 }
 
 export default function LessonActivity () {
+  const navigate = useNavigate()
   const { DO_WHILE, WHILE } = enumLoop
   const [loopWarning, setLoopWarning] = useState("")
   const forLoopHandle = () => {
     setLoopWarning("")
-    console.log("navigate to other place")
+    navigate("/lessons/lesson-one/lesson-activityfor")
   }
   return (
     <>
