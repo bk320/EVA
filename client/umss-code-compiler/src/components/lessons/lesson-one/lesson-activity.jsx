@@ -24,7 +24,7 @@ export default function LessonActivity () {
           <section className="my-4">
           <fieldset className="p-4 my-8 border-2 border-slate-500 bg-slate-300 rounded-lg ">
             <legend className="font-medium text-white p-2 border-slate-600 border-2 rounded-lg bg-slate-500">Instrucciones:</legend>
-            <p className="text-center py-0">Realizar el recorrido de una Matriz 3x3</p>
+            <p className="text-center py-0"><strong>Usando solo las variables `i` y `j`, recorre e imprime una matriz 3x3.</strong></p>
           </fieldset>
           </section>
           <fieldset className="felx justify-center justify-around rounded-lg border-2 border-slate-600 mx-11 my-8 text-center bg-slate-200">

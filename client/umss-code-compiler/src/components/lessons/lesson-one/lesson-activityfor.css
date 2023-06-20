@@ -1,0 +1,49 @@
+.result-box {
+    border: 1px solid black;
+    width: 80%;
+    padding: 5px;
+    margin-top: 5px;
+  }
+  
+  .result-box--success {
+    background-color: green;
+  }
+  
+  .result-box--error {
+    background-color: red;
+  }
+  .container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .input-field {
+    border: 2px solid #FF6600;
+    padding: 2px;
+    margin-bottom: 4px;
+    width: 100px;
+  }
+  
+  .tooltip {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: #999;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .container:hover .tooltip {
+    opacity: 1;
+  }
+  .custom-button {
+    width: 100px; /* Ancho deseado para los botones */
+    height: 100px; /* Alto deseado para los botones */
+    margin: 0 auto;
+  }
+  .button-icon {
+    width: 90%; /* Ajustar imagen al ancho del botón */
+    height: 90%; /* Ajustar imagen al alto del botón */
+    object-fit: cover; /* Ajustar imagen para llenar el espacio del botón */
+  }
