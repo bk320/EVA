@@ -19,10 +19,12 @@
     "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
     "react-tooltip": "^5.13.2",
+    "simple-scorm-packager": "^0.2.7",
     "sort-by": "^1.2.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "package-scorm": "node scoPackager.js",
     "lint": "eslint --ext .jsx --fix",
     "format": "prettier src/**/*.jsx --write",
     "start": "set DISABLE_ESLINT_PLUGIN=true && react-scripts start",
@@ -58,4 +60,5 @@
     "prettier": "^2.8.8",
     "tailwindcss": "^3.3.2"
   }
+
 }

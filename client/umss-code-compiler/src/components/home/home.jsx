@@ -12,7 +12,7 @@ function Home() {
         <h1 className="text-2xl text-center py-3 font-bold">¿Cúal es el objetivo de esta aplicación?</h1>
         <div className="mt-1 mb-4 mx-4">
           <p className="text-sm">
-            El objetivo de esta aplicación es guiar a los estudiantes principaintes en java a utilizar estructuras de control de total importancia
+            El objetivo de esta aplicación es guiar a los estudiantes principiantes en java a utilizar estructuras de control de total importancia
             para el proceso de creación de un programa, llamados <em>Bucles o Ciclos.</em>
             <br /></p>
             <h2 className="text-xl font-medium my-2">Ciclos</h2>
