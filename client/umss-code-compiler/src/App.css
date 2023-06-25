@@ -1,0 +1,9 @@
+.main-panel {
+    display: grid;
+    grid-template-columns: 12rem auto;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+}
