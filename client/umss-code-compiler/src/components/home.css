@@ -1,0 +1,25 @@
+.goToButton {
+    display: flexbox;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.goToButton button {
+    background-color: aquamarine;
+    border-radius: 2px;
+    padding: 0.5rem;
+}
+
+.loop-icon svg {
+    width: 10rem;
+    animation: rotation 1.5s infinite linear;
+  }
+  
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }

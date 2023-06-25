@@ -1,0 +1,46 @@
+.side-bar {
+    height: 100vh;
+    display: flex;
+    background-color: #db3d44;
+}
+
+.item {
+    display: flex;
+    padding: 1rem;
+    color: #fff;
+}
+
+.item-active {
+    background-color: #e45959;
+}
+
+.item svg {
+    width: 1.5rem;
+}
+
+.item p {
+    margin-left: 1rem;
+}
+
+.sub-item {
+    padding: 0.5rem;
+    padding-left: 2.5rem;
+    background-color: rgb(134, 32, 32);
+    color: white;
+}
+
+.sub-item-active {
+    background-color: rgb(167, 39, 39);
+}
+
+.sub-item:hover {
+    background-color: rgb(167, 39, 39);
+}
+
+.unique-item {
+    cursor: pointer;
+}
+
+.unique-item:hover {
+    background-color: #e45959;
+}

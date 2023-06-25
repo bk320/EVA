@@ -1,0 +1,41 @@
+.card {
+    margin: 2rem;
+    padding: 1rem;
+    width: 50vw;
+    border-radius: 3px;
+    background-color: aliceblue;
+}
+
+.header {
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.content {
+    padding: 1rem;
+    text-align: justify;
+    position: relative;
+}
+
+.content-actions {
+    width: 4rem;
+    max-width: 4rem;
+    position: absolute;
+    margin-left: 5rem;
+    right: -5rem;
+    background-color: rgb(30, 179, 30);
+    border-radius: 0 0.2rem 0.2rem 0;
+}
+
+.content-actions div svg {
+    color: white;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
+.content-actions svg:hover {
+    background-color: rgb(23, 139, 23);
+}
