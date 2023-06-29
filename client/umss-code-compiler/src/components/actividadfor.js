@@ -1,58 +1,117 @@
+import React, { useState } from 'react';
 import { PlayIcon, XCircle } from "../assets/icons";
 import Card from "./common/card";
+import './actividadfor.css';
 
 export default function ActividadFor() {
-    const actions = [
-        {
-            icon: <PlayIcon/>,
-            onClickEvent: (event) => {
-                alert('Its one way to show warnings messages. Replace this part')
-                console.log(event)
-            }
-        },
-        {
-            icon: <XCircle/>,
-            onClickEvent: () => {
-                alert('remove')
-            }
-        }
-    ]
-    return(
-        <div className="center-content">
-            <Card {...{ title: 'Activity for loop', actions }}>
-            <div style={{ background: "#EEEFF0", width: "80%", padding: "10px", borderRadius: "5px", marginBottom: "20px" }}>
-                <pre>
-                <strong style={{ fontSize: "25px", color: "#940904" }}>{"Paso 2. Completa la Sentencia\n"}</strong>
-                <code>{"\n"}</code>
-                <code>{"\n"}</code>
-                <code>{"1  class ListarMatriz {\n"}</code>
-                <code>{"2    public static void main(String[] args) {\n"}</code>
-                <code>{"3        int[][] matriz = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};\n"}</code>
-                <code>{"4       System.out.println(\"La matriz es:\");\n"}</code>
-                <code>{"5        // Iterar sobre las filas de la matriz\n"}</code>
-                </pre>
-                </div>
-            </Card>
-        {/* <div style="width: 150px; height: 100vh; background-color: #db3d44; position: absolute; top: 0px; right: 0px;">
-                <ol style="padding-inline-start: 0px;">
-                <li style={{ listStyle: 'none' }}>
-                <a href="#"><svg fill="LightSlateGrey" stroke="DarkSlateGrey" strokeWidth={1} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                                clip-rule="evenodd" fill-rule="evenodd" d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm6.39-2.908a.75.75 0 01.766.027l3.5 2.25a.75.75 0 010 1.262l-3.5 2.25A.75.75 0 018 12.25v-4.5a.75.75 0 01.39-.658z"></path>
-                        </svg></a>
-                        </li>
-                        <li style={{ listStyle: 'none' }}>
-                        <a href="#"><svg fill="LightSlateGrey" stroke="DarkSlateGrey" strokeWidth={1} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        clip-rule="evenodd" fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"></path>
-                        </svg></a>
-                        </li>
-                        </ol>
-                    </div> */}
-                    </div>
-    )
-}
+  const submitForm = () => {
+  let caso = 0;
+  let caso2 = 0;
+  
+
+  const otroArray = ["i", "i", "i", "j", "j", "j", "i", "j"]; // Ejemplo de arreglo
+
+  // Comparar los arreglos
+  if (inputValues.length !== otroArray.length) {
+    console.log("Los arreglos no tienen la misma longitud.");
+    return;
+  }
+
+  const valoresDiferentes = [];
+  for (let i = 0; i < inputValues.length; i++) {
+    if (inputValues[i] !== otroArray[i]) {
+      valoresDiferentes.push(i);
+    }
+  }
+
+  if (valoresDiferentes.length > 0) {
+    caso = 3;
+    
+  } else {
+    caso = 1;
+  }
+
+  // Comparar las posiciones 0, 1, 2 y 6
+  const primeraParte = [inputValues[0], inputValues[1], inputValues[2], inputValues[6]];
+  const todasIgualesPrimeraParte = primeraParte.every((valor) => valor === primeraParte[0]);
+
+  // Comparar las posiciones 3, 4, 5 y 7
+  const segundaParte = [inputValues[3], inputValues[4], inputValues[5], inputValues[7]];
+  const todasIgualesSegundaParte = segundaParte.every((valor) => valor === segundaParte[0]);
+
+  if (todasIgualesPrimeraParte && todasIgualesSegundaParte) {
+    caso2 = 2;
+  } else {
+    caso = 3;
+  }
+
+  if (caso === 1) {
+    document.getElementById('mensaje').textContent = "¡Los campos han sido llenados correctamente!";
+  } else if (caso2 === 2) {
+    document.getElementById('mensaje').textContent ="Tu solución es correcta, pero es mejor usar 'i' para el primer for y 'j' para el segundo.";
+  } else {
+    let mensaje = "No es correcto.\n";
+  mensaje += "Los valores en las posiciones " + valoresDiferentes.join(", ") + " no coinciden.\n";
+  mensaje += "Consejo: Es mejor usar 'i' para el primer for y 'j' para el segundo.";
+  document.getElementById('mensaje').textContent = mensaje;
+  }
+};
+
+  const actions = [
+    {
+      icon: <PlayIcon/>,
+      onClickEvent: submitForm
+    },
+    {
+      icon: <XCircle/>,
+      onClickEvent: () => {
+        alert('remove');
+      }
+    }
+  ];
+
+  const [inputValues, setInputValues] = useState(['', '', '', '', '', '', '', '']);
+
+  const handleInputChange = (index, value) => {
+    const newInputValues = [...inputValues];
+    newInputValues[index] = value;
+    setInputValues(newInputValues);
+  };
+
+ 
+
+  return (
+    <div className="center-content">
+      <Card title="Activity for loop" actions={actions}>
+        <div>
+          <h2>Completar el código:</h2>
+          <pre>
+            <code>
+              {"for (int "}
+              <input type="text" id="var1" value={inputValues[0]} onChange={(e) => handleInputChange(0, e.target.value)} style={{ width: "30px" }} />
+              {" = 0; "}
+              <input type="text" id="var2" value={inputValues[1]} onChange={(e) => handleInputChange(1, e.target.value)} style={{ width: "30px" }} />
+              {" < matriz.length; "}
+              <input type="text" id="var3" value={inputValues[2]} onChange={(e) => handleInputChange(2, e.target.value)} style={{ width: "30px" }}/>
+              {"++) {\n  for (int "}
+              <input type="text" id="var4" value={inputValues[3]} onChange={(e) => handleInputChange(3, e.target.value)} style={{ width: "30px" }}/>
+              {" = 0; "}
+              <input type="text" id="var5" value={inputValues[4]} onChange={(e) => handleInputChange(4, e.target.value)} style={{ width: "30px" }}/>
+              {" < matriz.length; "}
+              <input type="text" id="var6" value={inputValues[5]} onChange={(e) => handleInputChange(5, e.target.value)} style={{ width: "30px" }}/>
+              {"++) {\n    System.out.print (matriz["}
+              <input type="text" id="var7" value={inputValues[6]} onChange={(e) => handleInputChange(6, e.target.value)} style={{ width: "30px" }}/>
+              {"]["}
+              <input type="text" id="var8" value={inputValues[7]} onChange={(e) => handleInputChange(7, e.target.value)} style={{ width: "30px" }}/>
+              {"]+\"\ \");\n   "}
+              {"System.out.println();\n  }\n}"}
+            </code>
+          </pre>
+            <div id="mensaje" className="mensaje-destacado">
+          {/* Elemento para mostrar los mensajes */}
+        </div>
+        </div>
+      </Card>
+    </div>
+  );
+  }  

@@ -1,16 +1,5 @@
-div{
-    background-color: #dcdcdc;border:3px solid DarkSlateGrey; border-radius: 5px; margin-top: 50px; position: absolute; top: 30%; left: 50%; 
-  transform: translate(-50%, -50%);
-  padding: 60px;
-}
-div div {
-    position: absolute; top: 10%; left: 50%; 
-    transform: translate(-170.5%, -82%);
-    padding: 10px;
-}
-div div h2{
-    color: white; background-color: LightSlateGrey; border:3px solid DarkSlateGrey; border-radius: 5px;
-}
-div div pre{
-    font-family: Verdana, Geneva, Tahoma, sans-serif; line-height: 2; text-align: center;
-}
+.mensaje-destacado {
+    background-color: #b9a97b; /* Color de fondo */
+    padding: 10px; /* Espaciado interno */
+    margin-top: 20px; /* Margen superior */
+  }
