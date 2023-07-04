@@ -4,7 +4,7 @@ import EditorTexto from './EditorTexto';
 const ActividadFor = () => {
   return (
     <div>
-      <h1><b>Actividad For</b></h1>
+      <h1><b>Actividad</b></h1>
       <EditorTexto />
     </div>
   );

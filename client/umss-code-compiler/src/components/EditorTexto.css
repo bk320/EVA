@@ -20,25 +20,32 @@
   
   
   .rellenar-button {
-    background-color: green; /* Fondo verde */
-    color: white; /* Texto en color blanco */
-    border: 1px solid green; /* Contorno verde */
-    padding: 10px; /* Espacio interno dentro del botón */
-    cursor: pointer; /* Cambiar el cursor al pasar por encima del botón */
-    margin-top: 10px; /* Espacio superior */
-}
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 20px; /* Aplica un borde redondeado */
+  }
   
   .resultado {
     margin-top: 20px; /* Espacio superior para separar del botón */
+    background-color: #e6f1f9; /* Fondo azul claro */
+    padding: 10px; /* Espacio interno dentro del resultado */
+    
   }
   
   .selecciona-palabra {
+    margin-bottom: 20px;
     background-color: lightblue; /* Fondo de color claro */
     padding: 5px; /* Espacio interno dentro del párrafo */
+    
   }
   
   .palabra-input {
     margin-left: 5px; /* Espacio a la izquierda del campo de entrada */
+    
   }
   .verificar-button {
     background-color: blueviolet; /* Color de fondo verde */
@@ -47,6 +54,7 @@
     padding: 10px; /* Espacio interno dentro del botón */
     cursor: pointer; /* Cambiar el cursor al pasar por encima del botón */
     margin-top: 10px; /* Espacio superior */
+    border-radius: 20px; /* Aplica un borde redondeado */
   }
 
   .mensaje {
@@ -70,4 +78,16 @@
     padding: 10px;
     margin-top: 10px;
     border-radius: 5px;
+  }
+
+  .palabras-input {
+    margin-bottom: 20px;
+    border: 1px solid black;
+  }
+
+  .relleno {
+    border: 0.5px solid black; /* Borde negro */
+    padding: 5px; /* Espacio interno dentro de la celda */
+    /*line-height: 1.5; /* Espaciado entre líneas */
+    margin-bottom: 5px; /* Espacio entre celdas */
   }

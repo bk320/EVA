@@ -19,7 +19,7 @@ const EditorTexto = () => {
           <input
             type="text"
             className="relleno"
-            placeholder="Rellena aquí"
+            placeholder="Rellena aqui"
             key={index}
           />
         );
@@ -71,7 +71,7 @@ const EditorTexto = () => {
 
   return (
     <div className="editor-container">
-      <h1>Rellena Huecos</h1>
+      <h1><b>Rellena Huecos</b></h1>
       <div className="editor-textarea">
         <textarea
           value={texto}
@@ -81,7 +81,7 @@ const EditorTexto = () => {
         ></textarea>
       </div>
       <br />
-      <p className="selecciona-palabra">Selecciona una o varias palabras:</p>
+      <p className="selecciona-palabra"> <b>Selecciona una o varias palabras:</b></p>
       <textarea
         value={palabrasSeleccionadas.join(' ')}
         onChange={(e) =>
@@ -105,7 +105,7 @@ const EditorTexto = () => {
         onClick={verificarPalabras}
         disabled={palabrasSeleccionadas.length === 0}
       >
-        Verificar
+        <b>Verificar</b>
       </button>
       <br />
       <div
