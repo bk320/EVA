@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import './EditorTexto.css'; // Importar el archivo CSS
 
 const EditorTexto = () => {
+  const [instrucciones, setInstrucciones] = useState('');
   const [texto, setTexto] = useState('');
   const [palabrasSeleccionadas, setPalabrasSeleccionadas] = useState([]);
   const [resultado, setResultado] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [ordenPalabras, setOrdenPalabras] = useState([]);
   const [correcto, setCorrecto] = useState([]);
+  const [contenidoInstrucciones, setContenidoInstrucciones] = useState('');
 
   const rellenarPalabra = () => {
     const palabras = texto.split(' ');
-    console.log(palabras)
+    console.log(palabras);
     const resultadoFinal = palabras.map((palabra, index) => {
       if (palabrasSeleccionadas.includes(palabra)) {
         setCorrecto((prevCorrecto) => [...prevCorrecto, palabra]);
@@ -19,21 +21,18 @@ const EditorTexto = () => {
           <input
             type="text"
             className="relleno"
-            placeholder="Rellena aqui"
+            placeholder="Rellena aquí"
             key={index}
           />
         );
       } else {
         return palabra + ' ';
       }
-      
     });
 
     setResultado(resultadoFinal);
     setOrdenPalabras(
-      palabrasSeleccionadas.filter((palabra) =>
-        texto.includes(palabra)
-      )
+      palabrasSeleccionadas.filter((palabra) => texto.includes(palabra))
     );
   };
 
@@ -41,10 +40,10 @@ const EditorTexto = () => {
     const palabrasIngresadas = Array.from(
       document.getElementsByClassName('relleno')
     ).map((input) => input.value.trim());
-  
+
     let esCorrecto = true;
     let palabraIncorrecta = '';
-  
+
     if (palabrasIngresadas.length === correcto.length) {
       for (let i = 0; i < correcto.length; i++) {
         if (palabrasIngresadas[i] !== correcto[i]) {
@@ -56,22 +55,48 @@ const EditorTexto = () => {
     } else {
       esCorrecto = false;
     }
-    console.log(palabrasIngresadas)
-    console.log(correcto)
-    console.log("correct")
-    console.log(esCorrecto)
+    console.log(palabrasIngresadas);
+    console.log(correcto);
+    console.log('correct');
+    console.log(esCorrecto);
     if (esCorrecto) {
       setMensaje('Correcto');
     } else if (palabraIncorrecta) {
-      setMensaje(`Correcto pero no tanto. La palabra "${palabraIncorrecta}" debería ir en ese lugar.`);
+      setMensaje(
+        `Correcto pero no tanto. La palabra "${palabraIncorrecta}" debería ir en ese lugar.`
+      );
     } else {
       setMensaje('Muy mal');
     }
   };
 
+  const aceptarInstrucciones = () => {
+    setContenidoInstrucciones(instrucciones);
+  };
+
   return (
     <div className="editor-container">
-      <h1><b>Rellena Huecos</b></h1>
+      <h1>
+        <b>INSTRUCCIONES:</b>
+      </h1>
+      <div className="instrucciones-container">
+        <textarea
+          id="instrucciones"
+          value={instrucciones}
+          onChange={(e) => setInstrucciones(e.target.value)}
+          rows="5"
+          cols="80"
+        ></textarea>
+        <button className="aceptar-button" onClick={aceptarInstrucciones}>
+          ACEPTAR
+        </button>
+      </div>
+      {contenidoInstrucciones && (
+        <p className="contenido-instrucciones">{contenidoInstrucciones}</p>
+      )}
+      <h1>
+        <b>Rellena Huecos</b>
+      </h1>
       <div className="editor-textarea">
         <textarea
           value={texto}
@@ -81,12 +106,12 @@ const EditorTexto = () => {
         ></textarea>
       </div>
       <br />
-      <p className="selecciona-palabra"> <b>Selecciona una o varias palabras:</b></p>
+      <p className="selecciona-palabra">
+        <b>Selecciona una o varias palabras:</b>
+      </p>
       <textarea
         value={palabrasSeleccionadas.join(' ')}
-        onChange={(e) =>
-          setPalabrasSeleccionadas(e.target.value.split(' '))
-        }
+        onChange={(e) => setPalabrasSeleccionadas(e.target.value.split(' '))}
         className="palabras-input"
       ></textarea>
       <br />

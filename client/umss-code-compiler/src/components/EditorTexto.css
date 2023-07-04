@@ -91,3 +91,40 @@
     /*line-height: 1.5; /* Espaciado entre líneas */
     margin-bottom: 5px; /* Espacio entre celdas */
   }
+
+  .editor-textarea {
+    margin-bottom: 10px; /* Espacio inferior para separar del botón */
+    border: 2px solid black; /* Borde negro */
+    padding: 5px; /* Espacio interno dentro del área de texto */
+    resize: none; /* Desactivar la capacidad de redimensionar el área de texto */
+    width: fit-content; /* Ancho ajustado al contenido */
+    margin: 0 auto; /* Centrar el área de texto horizontalmente */
+  }
+
+  .instrucciones-container{
+      margin-bottom: 10px; /* Espacio inferior para separar del botón */
+      border: 2px solid black; /* Borde negro */
+      padding: 5px; /* Espacio interno dentro del área de texto */
+      resize: none; /* Desactivar la capacidad de redimensionar el área de texto */
+      width: fit-content; /* Ancho ajustado al contenido */
+      margin: 0 auto; /* Centrar el área de texto horizontalmente */
+
+  }
+
+  .aceptar-button{
+
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 20px; /* Aplica un borde redondeado */
+  }
+
+  .contenido-instrucciones{
+    margin-top: 20px; /* Espacio superior para separar del botón */
+    background-color: #4e7998; /* Fondo azul claro */
+    padding: 10px; /* Espacio interno dentro del resultado */
+
+  }
