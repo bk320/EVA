@@ -35,9 +35,7 @@ const EditorTexto = () => {
   
     const esCorrecto =
       palabrasIngresadas.length === palabrasSeleccionadas.length &&
-      palabrasIngresadas.every(
-        (palabra, index) => palabra === palabrasSeleccionadas[index]
-      );
+      palabrasIngresadas.every((palabra) => palabrasSeleccionadas.includes(palabra));
   
     setMensaje(esCorrecto ? 'Correcto' : 'Muy mal');
   };
