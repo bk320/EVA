@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './EditorTexto.css'; // Importar el archivo CSS
 
 const EditorTexto = () => {
@@ -10,6 +10,8 @@ const EditorTexto = () => {
   const [ordenPalabras, setOrdenPalabras] = useState([]);
   const [correcto, setCorrecto] = useState([]);
   const [contenidoInstrucciones, setContenidoInstrucciones] = useState('');
+  const resultadoRef = useRef(null);
+  const instruccionesRef = useRef(null);
 
   const rellenarPalabra = () => {
     const palabras = texto.split(' ');
@@ -74,6 +76,30 @@ const EditorTexto = () => {
     setContenidoInstrucciones(instrucciones);
   };
 
+
+  const exportarAHTML = () => {
+    const contenidoInstrucciones = instruccionesRef.current.innerHTML;
+    const contenidoResultado = resultadoRef.current.innerHTML;
+  
+    const contenido = `
+      <h1><b>INSTRUCCIONES:</b></h1>
+      <div class="instrucciones-container">
+        ${contenidoInstrucciones}
+      </div>\n
+      <h1><b>Rellena Huecos</b></h1>
+      <div class="resultado">${contenidoResultado}</div>
+      <button class="verificar-button">Ver Resultado</button> 
+      <link rel="stylesheet" type="text/css" href="export.css"> 
+    `;
+  
+    const enlaceDescarga = document.createElement('a');
+    const archivoHTML = new Blob([contenido], { type: 'text/html' });
+  
+    enlaceDescarga.href = URL.createObjectURL(archivoHTML);
+    enlaceDescarga.download = 'resultado.html';
+    enlaceDescarga.click();
+  };
+
   return (
     <div className="editor-container">
       <h1>
@@ -81,6 +107,7 @@ const EditorTexto = () => {
       </h1>
       <div className="instrucciones-container">
         <textarea
+          ref={instruccionesRef}
           id="instrucciones"
           value={instrucciones}
           onChange={(e) => setInstrucciones(e.target.value)}
@@ -123,7 +150,7 @@ const EditorTexto = () => {
         Rellenar estas palabras
       </button>
       <br />
-      <pre className="resultado">{resultado}</pre>
+      <pre ref={resultadoRef} className="resultado">{resultado}</pre>
       <br />
       <button
         className="verificar-button"
@@ -132,6 +159,7 @@ const EditorTexto = () => {
       >
         <b>Verificar</b>
       </button>
+      <button onClick={exportarAHTML} className="html-button">Exportar a HTML</button>
       <br />
       <div
         className={`mensaje ${
