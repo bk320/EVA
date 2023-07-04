@@ -48,7 +48,7 @@ const EditorTexto = () => {
           value={texto}
           onChange={(e) => setTexto(e.target.value)}
           rows="10"
-          cols="50"
+          cols="80"
         ></textarea>
       </div>
       <br />
@@ -69,7 +69,7 @@ const EditorTexto = () => {
         Rellenar estas palabras
       </button>
       <br />
-      <div className="resultado">{resultado}</div>
+      <pre className="resultado">{resultado}</pre>
       <br />
       <button
         className="verificar-button"
