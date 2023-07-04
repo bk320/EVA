@@ -1,0 +1,66 @@
+/* EditorTexto.css */
+
+.editor-container {
+    border: 2px solid black; /* Línea negra alrededor del contenedor */
+    text-align: center; /* Centrar el contenido del contenedor */
+    padding: 20px; /* Espacio interno dentro del contenedor */
+  }
+  
+  /* EditorTexto.css */
+
+.editor-textarea {
+    margin-bottom: 10px; /* Espacio inferior para separar del botón */
+    border: 2px solid black; /* Borde negro */
+    padding: 5px; /* Espacio interno dentro del área de texto */
+    resize: none; /* Desactivar la capacidad de redimensionar el área de texto */
+    width: fit-content; /* Ancho ajustado al contenido */
+    margin: 0 auto; /* Centrar el área de texto horizontalmente */
+  }
+
+  
+  
+  .rellenar-button {
+    background-color: green; /* Fondo verde */
+    color: white; /* Texto en color blanco */
+    border: 1px solid green; /* Contorno verde */
+    padding: 10px; /* Espacio interno dentro del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima del botón */
+    margin-top: 10px; /* Espacio superior */
+}
+  
+  .resultado {
+    margin-top: 20px; /* Espacio superior para separar del botón */
+  }
+  
+  .selecciona-palabra {
+    background-color: lightblue; /* Fondo de color claro */
+    padding: 5px; /* Espacio interno dentro del párrafo */
+  }
+  
+  .palabra-input {
+    margin-left: 5px; /* Espacio a la izquierda del campo de entrada */
+  }
+  .verificar-button {
+    background-color: blueviolet; /* Color de fondo verde */
+    color: white; /* Texto en color blanco */
+    border: 1px solid blueviolet; /* Contorno verde */
+    padding: 10px; /* Espacio interno dentro del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima del botón */
+    margin-top: 10px; /* Espacio superior */
+  }
+
+  .mensaje {
+    margin-top: 20px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .mensaje-correcto {
+    background-color: green;
+  }
+  
+  .mensaje-incorrecto {
+    background-color: red;
+  }
