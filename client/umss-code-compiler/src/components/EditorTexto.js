@@ -6,9 +6,10 @@ const EditorTexto = () => {
   const [palabrasSeleccionadas, setPalabrasSeleccionadas] = useState([]);
   const [resultado, setResultado] = useState('');
   const [mensaje, setMensaje] = useState('');
+  const [solucion, setSolucion] = useState('');
 
   const rellenarPalabra = () => {
-    const palabras = texto.split(' ');
+    const palabras = texto.split(/\s+/); // Utilizar una expresión regular para dividir el texto en palabras
 
     const resultadoFinal = palabras.map((palabra, index) => {
       if (palabrasSeleccionadas.includes(palabra)) {
@@ -32,12 +33,17 @@ const EditorTexto = () => {
     const palabrasIngresadas = Array.from(
       document.getElementsByClassName('relleno')
     ).map((input) => input.value.trim());
-  
+
     const esCorrecto =
       palabrasIngresadas.length === palabrasSeleccionadas.length &&
       palabrasIngresadas.every((palabra) => palabrasSeleccionadas.includes(palabra));
-  
+
     setMensaje(esCorrecto ? 'Correcto' : 'Muy mal');
+  };
+
+  const mostrarSolucion = () => {
+    const solucionFinal = palabrasSeleccionadas.join(' ');
+    setSolucion(solucionFinal);
   };
 
   return (
@@ -56,7 +62,7 @@ const EditorTexto = () => {
       <textarea
         value={palabrasSeleccionadas.join(' ')}
         onChange={(e) =>
-          setPalabrasSeleccionadas(e.target.value.split(' '))
+          setPalabrasSeleccionadas(e.target.value.split(/\s+/)) // Utilizar la misma expresión regular para dividir las palabras seleccionadas
         }
         className="palabras-input"
       ></textarea>
@@ -80,12 +86,27 @@ const EditorTexto = () => {
       </button>
       <br />
       <div
-      className={`mensaje ${
-        mensaje === 'Correcto' ? 'mensaje-correcto' : 'mensaje-incorrecto'
-      }`}
-    >
-      {mensaje}
-    </div>
+        className={`mensaje ${
+          mensaje === 'Correcto' ? 'mensaje-correcto' : 'mensaje-incorrecto'
+        }`}
+      >
+        {mensaje}
+      </div>
+      <br />
+      <button
+        className="solucion-button"
+        onClick={mostrarSolucion}
+        disabled={palabrasSeleccionadas.length === 0}
+      >
+        Solución
+      </button>
+      <br />
+      {solucion && (
+        <div className="solucion-container">
+          <p className="solucion-text">Solución:</p>
+          <div className="solucion">{solucion}</div>
+        </div>
+      )}
     </div>
   );
 };
