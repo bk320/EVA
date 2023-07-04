@@ -6,12 +6,15 @@ const EditorTexto = () => {
   const [palabrasSeleccionadas, setPalabrasSeleccionadas] = useState([]);
   const [resultado, setResultado] = useState('');
   const [mensaje, setMensaje] = useState('');
+  const [ordenPalabras, setOrdenPalabras] = useState([]);
+  const [correcto, setCorrecto] = useState([]);
 
   const rellenarPalabra = () => {
     const palabras = texto.split(' ');
-
+    console.log(palabras)
     const resultadoFinal = palabras.map((palabra, index) => {
       if (palabrasSeleccionadas.includes(palabra)) {
+        setCorrecto((prevCorrecto) => [...prevCorrecto, palabra]);
         return (
           <input
             type="text"
@@ -23,9 +26,15 @@ const EditorTexto = () => {
       } else {
         return palabra + ' ';
       }
+      
     });
 
     setResultado(resultadoFinal);
+    setOrdenPalabras(
+      palabrasSeleccionadas.filter((palabra) =>
+        texto.includes(palabra)
+      )
+    );
   };
 
   const verificarPalabras = () => {
@@ -33,11 +42,31 @@ const EditorTexto = () => {
       document.getElementsByClassName('relleno')
     ).map((input) => input.value.trim());
   
-    const esCorrecto =
-      palabrasIngresadas.length === palabrasSeleccionadas.length &&
-      palabrasIngresadas.every((palabra) => palabrasSeleccionadas.includes(palabra));
+    let esCorrecto = true;
+    let palabraIncorrecta = '';
   
-    setMensaje(esCorrecto ? 'Correcto' : 'Muy mal');
+    if (palabrasIngresadas.length === correcto.length) {
+      for (let i = 0; i < correcto.length; i++) {
+        if (palabrasIngresadas[i] !== correcto[i]) {
+          esCorrecto = false;
+          palabraIncorrecta = correcto[i];
+          break;
+        }
+      }
+    } else {
+      esCorrecto = false;
+    }
+    console.log(palabrasIngresadas)
+    console.log(correcto)
+    console.log("correct")
+    console.log(esCorrecto)
+    if (esCorrecto) {
+      setMensaje('Correcto');
+    } else if (palabraIncorrecta) {
+      setMensaje(`Correcto pero no tanto. La palabra "${palabraIncorrecta}" debería ir en ese lugar.`);
+    } else {
+      setMensaje('Muy mal');
+    }
   };
 
   return (
@@ -80,12 +109,12 @@ const EditorTexto = () => {
       </button>
       <br />
       <div
-      className={`mensaje ${
-        mensaje === 'Correcto' ? 'mensaje-correcto' : 'mensaje-incorrecto'
-      }`}
-    >
-      {mensaje}
-    </div>
+        className={`mensaje ${
+          mensaje === 'Correcto' ? 'mensaje-correcto' : 'mensaje-incorrecto'
+        }`}
+      >
+        {mensaje}
+      </div>
     </div>
   );
 };
