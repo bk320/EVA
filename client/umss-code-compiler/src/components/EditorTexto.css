@@ -33,7 +33,8 @@
     margin-top: 20px; /* Espacio superior para separar del botón */
     background-color: #e6f1f9; /* Fondo azul claro */
     padding: 10px; /* Espacio interno dentro del resultado */
-    
+    text-align: left;
+    margin-left: 200px;
   }
   
   .selecciona-palabra {
@@ -81,9 +82,9 @@
   }
   
   .mensaje-incorrecto {
-    background-color: red;
+    background-color: rgb(185, 86, 5);
   }
-
+  
   .solucion-container {
     background-color: #e6e6fa;
     padding: 10px;

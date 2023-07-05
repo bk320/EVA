@@ -15,7 +15,7 @@ const EditorTexto = () => {
 
   const rellenarPalabra = () => {
     const palabras = texto.split(' ');
-    console.log(palabras);
+    //console.log(palabras);
     const resultadoFinal = palabras.map((palabra, index) => {
       if (palabrasSeleccionadas.includes(palabra)) {
         setCorrecto((prevCorrecto) => [...prevCorrecto, palabra]);
@@ -42,34 +42,131 @@ const EditorTexto = () => {
     const palabrasIngresadas = Array.from(
       document.getElementsByClassName('relleno')
     ).map((input) => input.value.trim());
-
+  
+    const transformado = transformarPalabras2(palabrasIngresadas);
+    const transformado2 = transformarPalabras3(transformado);
+  
     let esCorrecto = true;
-    let palabraIncorrecta = '';
-
-    if (palabrasIngresadas.length === correcto.length) {
-      for (let i = 0; i < correcto.length; i++) {
-        if (palabrasIngresadas[i] !== correcto[i]) {
-          esCorrecto = false;
-          palabraIncorrecta = correcto[i];
-          break;
+    let palabrasIncorrectas = new Set();
+    let palabrasCorrectas = new Set();
+    let esVerdadero = false;
+  
+    for (let i = 0; i < palabrasIngresadas.length; i++) {
+      if (palabrasIngresadas[i] !== correcto[i]) {
+        esCorrecto = false;
+        palabrasIncorrectas.add(correcto[i]);
+      }
+    }
+    if (esCorrecto) {
+      setMensaje('Correcto las variables que utilizaste son las correctas');
+    } else {
+      if (transformado2.every((palabra, i) => palabra === correcto[i])) {
+        for (let i = 0; i < transformado.length; i++) {
+          if (palabrasIngresadas[i] !== correcto[i]) {
+            palabrasIncorrectas.add(correcto[i]);
+            palabrasCorrectas.add(palabrasIngresadas[i]);
+          }
+        }
+        for (let i = 0; i < transformado2.length; i++) {
+          if (transformado[i] !== correcto[i]) {
+            palabrasIncorrectas.add(correcto[i]);
+            palabrasCorrectas.add(transformado[i]);
+          }
+        }
+        esCorrecto = false;
+        esVerdadero = transformado2.every(
+          (palabra, i) => palabra === correcto[i]
+        );
+      }
+  
+      if (esVerdadero) {
+        const palabrasIncorrectasArray = Array.from(palabrasIncorrectas);
+        const palabrasCorrectasArray = Array.from(palabrasCorrectas);
+        setMensaje(
+          `Correcto pero las variables que deberías usar son "i" y "j". Debes utilizar "${palabrasIncorrectasArray.join(
+            '", "'
+          )}" en lugar de "${palabrasCorrectasArray.join('", "')}" para que la sentencia este correctamente escrita.`
+        );
+      } else {
+        const palabrasIncorrectasArray = Array.from(palabrasIncorrectas);
+        setMensaje(
+          `Asegúrate de que las variables "${palabrasIncorrectasArray.join(
+            '", "'
+          )}" estén en las posiciones correctas correctos.`
+        );
+      }
+    }
+  };
+  const transformarPalabras2 = (palabrasIngresadas) => {
+    const palabrasEncontradas = new Set();
+    const transformado = [];
+  
+    for (let i = 0; i < palabrasIngresadas.length; i++) {
+      const palabra = palabrasIngresadas[i];
+  
+      if (!palabrasEncontradas.has(palabra)) {
+        palabrasEncontradas.add(palabra);
+  
+        if (Array.from(palabrasEncontradas).indexOf(palabra) === 0) {
+          for (let j = 0; j < palabrasIngresadas.length; j++) {
+            if (palabrasIngresadas[j] === palabra) {
+              transformado.push('i');
+            } else {
+              transformado.push(palabrasIngresadas[j]);
+            }
+          }
+          return transformado;
         }
       }
-    } else {
-      esCorrecto = false;
+  
+      transformado.push(palabra);
     }
-    console.log(palabrasIngresadas);
-    console.log(correcto);
-    console.log('correct');
-    console.log(esCorrecto);
-    if (esCorrecto) {
-      setMensaje('Correcto');
-    } else if (palabraIncorrecta) {
-      setMensaje(
-        `Correcto pero no tanto. La palabra "${palabraIncorrecta}" debería ir en ese lugar.`
-      );
-    } else {
-      setMensaje('Muy mal');
+  
+    return transformado;
+  };
+
+  const transformarPalabras3 = (palabrasIngresadas) => {
+    const palabrasEncontradas = new Set();
+    const transformado = [];
+  
+    for (let i = 0; i < palabrasIngresadas.length; i++) {
+      const palabra = palabrasIngresadas[i];
+  
+      if (!palabrasEncontradas.has(palabra)) {
+        palabrasEncontradas.add(palabra);
+  
+        if (palabra !== 'i') {
+          for (let j = 0; j < palabrasIngresadas.length; j++) {
+            if (palabrasIngresadas[j] === palabra) {
+              transformado.push('j');
+            } else {
+              transformado.push(palabrasIngresadas[j]);
+            }
+          }
+          return transformado;
+        }
+      }
     }
+  
+    return transformado;
+  };
+
+  const transformarPalabras = (palabrasIngresadas) => {
+    const palabrasEncontradas = new Set();
+    const transformado = [];
+    let reemplazo = 'i';
+    
+    for (let i = 0; i < palabrasIngresadas.length; i++) {
+      const palabra = palabrasIngresadas[i];
+      if (palabra !== 'i' && !palabrasEncontradas.has(palabra)) {
+        palabrasEncontradas.add(palabra);
+        reemplazo = reemplazo === 'i' ? 'j' : 'i';
+      }
+  
+      transformado.push(reemplazo);
+    }
+  
+    return transformado;
   };
 
   const aceptarInstrucciones = () => {
@@ -163,7 +260,7 @@ const EditorTexto = () => {
       <br />
       <div
         className={`mensaje ${
-          mensaje === 'Correcto' ? 'mensaje-correcto' : 'mensaje-incorrecto'
+          mensaje === 'Correcto las variables que utilizaste son las correctas' ? 'mensaje-correcto' : 'mensaje-incorrecto'
         }`}
       >
         {mensaje}
