@@ -22,7 +22,7 @@
   "homepage": "./",
   "scripts": {
     "package-scorm": "node scoPackager.js",
-    "start": "react-scripts start",
+    "start": "react-scripts start --open",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
@@ -39,5 +39,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "devDependencies": {
+    "html-loader": "^4.2.0"
+  }
 }

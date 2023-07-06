@@ -232,50 +232,44 @@ const EditorTexto = () => {
   }
 
   function guardarJS() {
-    
     const contenidoInstrucciones = instruccionesRef.current.innerHTML;
     const contenidoResultado = resultadoRef.current.innerHTML;
-    console.log("lo que se muestra")
-    console.log(resultadoRef)
-    console.log(resultado)
-    console.log(contenidoResultado)
     const contenidoJS = `
-
-    import React from "react";
-
-    export default function For() {
-      const instruccionesRef = React.createRef();
-      
-      const instrucciones = "${contenidoInstrucciones}";
-      const resultado=\`${contenidoResultado}\`;
-      const formatResultado = () => {
-        const lines = resultado.split("\n");
-        const formattedLines = lines.map((line, index) => line.trim());
-      
-        return formattedLines.join("<br />");
-      };
-      
-      const createMarkup = () => {
-        return { __html: formatResultado() };
-      };
+  import React from "react";
+  
+  export default function For() {
+    const instruccionesRef = React.createRef();
     
-      return (
-        <div className="editor-container">
-          <div className="instrucciones-container">
-            <h1>
-              <b>{instrucciones}</b>
-            </h1>
-          </div>
-          <br />
+    const instrucciones = "${contenidoInstrucciones}";
+    const resultado= \`${contenidoResultado}\`;
+    
+    const formatResultado = () => {
+      const lines = resultado.split("\\n");
+      const formattedLines = lines.map((line, index) => line.trim());
+      return formattedLines.join("<br />");
+    };
+    
+    const createMarkup = () => {
+      return { __html: formatResultado() };
+    };
+  
+    return (
+      <div className="editor-container">
+        <div className="instrucciones-container">
           <h1>
-            <b>Rellena Huecos</b>
+            <b>{instrucciones}</b>
           </h1>
-          <div className="resultado" dangerouslySetInnerHTML={createMarkup()} />
-          <button className="verificar-button">Ver Resultado</button>
-          <br />
         </div>
-      );
-    }
+        <br />
+        <h1>
+          <b>Rellena Huecos</b>
+        </h1>
+        <div className="resultado" dangerouslySetInnerHTML={createMarkup()} />
+        <button className="verificar-button">Ver Resultado</button>
+        <br />
+      </div>
+    );
+  }
   `;
 
     fetch('/guardar-js', {
