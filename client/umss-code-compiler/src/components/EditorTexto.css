@@ -69,6 +69,17 @@
     margin-left: 10px;
   }
 
+  .JS-button {
+    background-color: rgb(43, 144, 226); /* Color de fondo verde */
+    color: white; /* Texto en color blanco */
+    border: 1px solid rgb(43, 144, 226); /* Contorno verde */
+    padding: 10px; /* Espacio interno dentro del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima del botón */
+    margin-top: 10px; /* Espacio superior */
+    border-radius: 20px; /* Aplica un borde redondeado */
+    margin-left: 10px;
+  }
+
   .mensaje {
     margin-top: 20px;
     padding: 10px;

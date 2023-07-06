@@ -230,6 +230,72 @@ const EditorTexto = () => {
         console.error('Error de red al realizar la solicitud:', error);
       });
   }
+
+  function guardarJS() {
+    
+    const contenidoInstrucciones = instruccionesRef.current.innerHTML;
+    const contenidoResultado = resultadoRef.current.innerHTML;
+    console.log("lo que se muestra")
+    console.log(resultadoRef)
+    console.log(resultado)
+    console.log(contenidoResultado)
+    const contenidoJS = `
+
+    import React from "react";
+
+    export default function For() {
+      const instruccionesRef = React.createRef();
+      
+      const instrucciones = "${contenidoInstrucciones}";
+      const resultado=\`${contenidoResultado}\`;
+      const formatResultado = () => {
+        const lines = resultado.split("\n");
+        const formattedLines = lines.map((line, index) => line.trim());
+      
+        return formattedLines.join("<br />");
+      };
+      
+      const createMarkup = () => {
+        return { __html: formatResultado() };
+      };
+    
+      return (
+        <div className="editor-container">
+          <div className="instrucciones-container">
+            <h1>
+              <b>{instrucciones}</b>
+            </h1>
+          </div>
+          <br />
+          <h1>
+            <b>Rellena Huecos</b>
+          </h1>
+          <div className="resultado" dangerouslySetInnerHTML={createMarkup()} />
+          <button className="verificar-button">Ver Resultado</button>
+          <br />
+        </div>
+      );
+    }
+  `;
+
+    fetch('/guardar-js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      body: contenidoJS,
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Archivo HTML guardado exitosamente en el backend.');
+        } else {
+          console.error('Error al guardar el archivo HTML en el backend.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error de red al realizar la solicitud:', error);
+      });
+  }
   
   
   
@@ -294,6 +360,8 @@ const EditorTexto = () => {
         <b>Verificar</b>
       </button>
       <button onClick={guardarHTML} className="html-button">Exportar a HTML</button>
+
+      <button onClick={guardarJS} className="JS-button">Exportar a JS</button>
       <br />
       <div
         className={`mensaje ${
