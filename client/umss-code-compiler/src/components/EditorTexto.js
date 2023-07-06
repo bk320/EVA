@@ -197,6 +197,32 @@ const EditorTexto = () => {
     enlaceDescarga.click();
   };
 
+  function guardarHTML() {
+    const contenidoHTML = '<h1>Mi propio contenido HTML</h1><p>¡Hola, mundo!</p>';
+    
+
+    fetch('/guardar-html', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      body: contenidoHTML,
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Archivo HTML guardado exitosamente en el backend.');
+        } else {
+          console.error('Error al guardar el archivo HTML en el backend.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error de red al realizar la solicitud:', error);
+      });
+  }
+  
+  
+  
+  
   return (
     <div className="editor-container">
       <h1>
@@ -256,7 +282,7 @@ const EditorTexto = () => {
       >
         <b>Verificar</b>
       </button>
-      <button onClick={exportarAHTML} className="html-button">Exportar a HTML</button>
+      <button onClick={guardarHTML} className="html-button">Exportar a HTML</button>
       <br />
       <div
         className={`mensaje ${
