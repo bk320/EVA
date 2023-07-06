@@ -198,13 +198,24 @@ const EditorTexto = () => {
   };
 
   function guardarHTML() {
-    const contenidoHTML = '<h1>Mi propio contenido HTML</h1><p>¡Hola, mundo!</p>';
-    
+    const contenidoInstrucciones = instruccionesRef.current.innerHTML;
+    const contenidoResultado = resultadoRef.current.innerHTML;
+  
+    const contenidoHTML = `
+      <h1><b>INSTRUCCIONES:</b></h1>
+      <div class="instrucciones-container">
+        ${contenidoInstrucciones}
+      </div>\n
+      <h1><b>Rellena Huecos</b></h1>
+      <div class="resultado">${contenidoResultado}</div>
+      <button class="verificar-button">Ver Resultado</button> 
+      <link rel="stylesheet" type="text/css" href="export.css"> 
+    `;
 
     fetch('/guardar-html', {
       method: 'POST',
       headers: {
-        'Content-Type': 'text/plain',
+        'Content-Type': 'text/html',
       },
       body: contenidoHTML,
     })

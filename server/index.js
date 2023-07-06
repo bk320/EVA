@@ -4,15 +4,16 @@ const app = express();
 const port = 3001
 // Configuración de rutas estáticas
 app.use(express.static('public'));
-app.use(bodyParser.json());
 
+// Configurar el middleware body-parser
+app.use(bodyParser.text({ type: 'text/html' }));
 const fs = require('fs');
 const path = require('path');
 
 app.post('/guardar-html', (req, res) => {
   const contenidoHTML = req.body;
-
-  const rutaArchivo = path.join(__dirname, 'public', 'resultado.html');
+  console.log(contenidoHTML);
+  const rutaArchivo = path.join(__dirname, '../client/umss-code-compiler', 'resultado.html');
 
   fs.writeFile(rutaArchivo, contenidoHTML, (err) => {
     if (err) {
